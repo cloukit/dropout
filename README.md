@@ -1,2 +1,17 @@
+[![](https://cloukit.github.io/assets/images/cloukit-banner-github.svg?v3)](https://cloukit.github.io/)
+
 # dropout
-Dropout is a non visible helper to drop something down, up, left or right of a DOM Element
+
+
+&nbsp;
+
+### Usage
+
+**https://cloukit.github.io/#/component/dropout**
+
+
+&nbsp;
+
+### License
+
+[MIT](https://github.com/cloukit/legal) © [Bernhard Grünewaldt](https://github.com/clouless)

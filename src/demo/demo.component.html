@@ -1,0 +1,22 @@
+<div class="demo">
+  <h3>Dropout with TemplateRef</h3>
+  <ng-template #myDropout1>
+    <div style="color:red">foobar {{myNumber}}</div>
+  </ng-template>
+  <button
+    type="button"
+    [cloukitDropout]="myDropout1"
+  >
+    click me
+  </button>
+
+  <br /><br />
+  
+  <h3>Dropout with plain text</h3>
+  <button
+    type="button"
+    cloukitDropout="bar"
+  >
+    click me
+  </button>
+</div>

@@ -1,0 +1,31 @@
+{
+  "COMMENT": "THIS FILE WILL BE PARSED DURING BUILD. IT IS NOT THE ACTUAL PACKAGE FILE PUSHE TO NPMJS!",
+  "name": "@cloukit/dropout",
+  "moduleId": "dropout",
+  "version": "1.0.0",
+  "description": "Dropout is a non visible helper to drop something down, up, left or right of a DOM Element",
+  "license": "MIT",
+  "author": "codelcou.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloukit/dropout.git"
+  },
+  "scripts": {
+    "build": "node ./node_modules/@cloukit/library-build-chain/build.js",
+    "build:demo": "node ./node_modules/@cloukit/library-build-chain/build.js --demo --install",
+    "start:demo": "node ./node_modules/@cloukit/library-build-chain/build.js --demo --run",
+    "watch": "node ./node_modules/@cloukit/library-build-chain/build.js --watch",
+    "test": "echo \"ok\""
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@cloukit/library-build-chain": "1.6.0"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=4.0.0",
+    "@angular/core": ">=4.0.0",
+    "rxjs": ">=5.0.0",
+    "zone.js": ">=0.8.0"
+  }
+}

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet href="https://cloukit.github.io/cdn-static/css/webfonts.css" type="text/css"?>
 <!--
   * @license MIT
   * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
@@ -7,9 +9,6 @@
   <title>
     cloukit-dropout-positioning
   </title>
-  <defs>
-    <style type="text/css">@import url(https://cloukit.github.io/cdn-static/css/webfonts.css);</style>
-  </defs>
   <g fill="none" fill-rule="evenodd">
     <rect stroke="#777" x="15.5" y="17.329" width="768" height="1198.171" rx="8"/>
     <g fill-rule="nonzero" fill="#777">

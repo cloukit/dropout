@@ -1,0 +1,11 @@
+
+{
+  "name": "dropout",
+  "status": "EXPERIMENTAL",
+  "versions": [
+    {
+      "version": "1.6.0",
+      "hasTheme": false
+    }
+  ]
+}

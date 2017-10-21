@@ -3,7 +3,7 @@
   "name": "@cloukit/dropout",
   "moduleId": "dropout",
   "version": "1.0.0",
-  "description": "Dropout is a non visible helper to drop something down, up, left or right of a DOM Element",
+  "description": "Dropout is a non visible helper to drop something down, up, left or right relative to a trigger element",
   "license": "MIT",
   "author": "codelcou.io",
   "repository": {
@@ -20,7 +20,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@cloukit/library-build-chain": "1.6.0"
+    "@cloukit/library-build-chain": "1.7.0"
   },
   "peerDependencies": {
     "@angular/common": ">=4.0.0",

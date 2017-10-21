@@ -1,22 +1,53 @@
-<div class="demo">
-  <h3>Dropout with TemplateRef</h3>
-  <ng-template #myDropout1>
-    <div style="color:red">foobar {{myNumber}}</div>
-  </ng-template>
-  <button
-    type="button"
-    [cloukitDropout]="myDropout1"
-  >
-    click me
-  </button>
+<cloukit-dropout-outlet></cloukit-dropout-outlet>
+<div style="padding:30px;display:flex;" class="demo">
+  <div style="flex:1;">
+    column 1 dummy text
+  </div>
+  <div style="flex:2;">
+    <ng-template #myModal1>
+      <div class="demoModal1">
+        I am a nice dropdown thingy or whatever ...
+        <br><br>
+        <button
+          type="button"
+          class="demoButton"
+          (click)="closeModal1()"
+        >You can close me from the inside</button>
+      </div>
+    </ng-template>
+    <div style="text-align: right">
+      <button
+        class="demoButton"
+        [cloukitDropout]="myModal1"
+        [cloukitDropoutClose]="myModal1Close"
+        [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
+        [cloukitDropoutPlacement]="DropoutPlacement.HORIZONTAL_RIGHT_BOTTOM"
+        [cloukitDropoutZIndex]="500"
+        (cloukitDropoutActive)="dropout1Active=$event"
+      >
+        <svg style="width:20px" viewBox="0 0 512 512">
+          <g stroke="none" fill="#ffffff" fill-rule="evenodd">
+            <polygon
+              [attr.points]="dropout1Active ? icon.down : icon.right"
+            ></polygon>
+          </g>
+        </svg>
+        Click me to show Dropdown
+      </button>
+    </div>
 
-  <br /><br />
-  
-  <h3>Dropout with plain text</h3>
-  <button
-    type="button"
-    cloukitDropout="bar"
-  >
-    click me
-  </button>
+    <br>
+    <br>
+    <br>
+
+    <ng-template #myTooltip1>
+      <div class="demoTooltip">A traditional german sausage</div>
+    </ng-template>
+    There is a thing called
+    <span class="tooltip" [cloukitDropout]="myTooltip1">Bratwurst</span>
+    which you should know. Hover the
+    <span class="tooltip" [cloukitDropout]="myTooltip1">Bratwurst</span>
+    to see onmouseover dropout.
+
+  </div>
 </div>

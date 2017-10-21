@@ -5,7 +5,7 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CloukitDropoutDirective } from './dropout.component';
+import { CloukitDropoutDirective } from './dropout.directive';
 import { DropoutService } from './services/dropout.service';
 import { CloukitDropoutOutletComponent } from './children/dropout-outlet.component';
 import { CloukitDropoutContainerComponent } from './children/dropout-container.component';

@@ -52,11 +52,11 @@
       <circle fill="#C1C1C1" transform="rotate(-1 26 9)" cx="26" cy="9" r="6"/>
       <circle fill="#C1C1C1" transform="rotate(-1 41 9)" cx="41" cy="9" r="6"/>
     </g>
-    <path fill="#710ECC" d="M613 176h41v17h-41z"/>
+    <path fill="#710ECC" d="M592 176h41v17h-41z"/>
     <text font-family="SourceSansPro-Light, Source Sans Pro" font-size="18" font-weight="300" letter-spacing="-1" fill="#710ECC">
       <tspan x="532" y="135">VERTICAL_LEFT_AUTO</tspan>
     </text>
-    <path fill="#A4E3FE" d="M613 193h59v38h-59z"/>
+    <path fill="#A4E3FE" d="M592 193h93v38h-93z"/>
     <path fill="#710ECC" d="M101 198h41v17h-41z"/>
     <path fill="#A4E3FE" d="M101 215h118v62H101z"/>
     <g transform="translate(54 358)">
@@ -181,12 +181,12 @@
     <text font-family="SourceSansPro-Light, Source Sans Pro" font-size="18" font-weight="300" letter-spacing="-1" fill="#710ECC">
       <tspan x="53" y="1174">ABSOLUTE_BOTTOM_LEFT</tspan>
     </text>
-    <path fill="#710ECC" d="M613 282h41v17h-41z"/>
-    <path fill="#A4E3FE" d="M613 244h59v38h-59z"/>
-    <path fill="#710ECC" d="M613 385h41v17h-41z"/>
-    <path fill="#A4E3FE" d="M613 402h59v38h-59z"/>
-    <path fill="#710ECC" d="M613 491h41v17h-41z"/>
-    <path fill="#A4E3FE" d="M613 453h59v38h-59z"/>
+    <path fill="#710ECC" d="M592 282h41v17h-41z"/>
+    <path fill="#A4E3FE" d="M592 244h93v38h-93z"/>
+    <path fill="#710ECC" d="M646 385h41v17h-41z"/>
+    <path fill="#A4E3FE" d="M594 402h93v38h-93z"/>
+    <path fill="#710ECC" d="M646 491h41v17h-41z"/>
+    <path fill="#A4E3FE" d="M594 453h93v38h-93z"/>
     <g transform="translate(54 777)">
       <path stroke="#979797" stroke-width="2" d="M1 18h210v139H1z"/>
       <path fill="#979797" d="M0 0h212v19H0z"/>

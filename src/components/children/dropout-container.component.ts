@@ -5,7 +5,8 @@
  */
 import { Component, HostListener, Input, OnInit, TemplateRef } from '@angular/core';
 import { isNullOrUndefined } from 'util';
-import { DropoutPlacement } from '../dropout.model';
+import { DropoutPlacement, DropoutTriggerElementDimensions, DropoutViewPortDimensions } from '../dropout.model';
+import { DropoutPositioningHelper } from '../../logic/dropout-positioning-helper';
 
 /**
  * The Dropout Body can be anything from a Tooltip, Modal to a Dropdown.
@@ -44,15 +45,21 @@ export class CloukitDropoutContainerComponent implements OnInit {
     }
   }
 
-  public repositionRelativeToTriggerElement(windowWidth: number) {
+  public repositionRelativeToTriggerElement(viewPortDimensions: DropoutViewPortDimensions) {
     if (!isNullOrUndefined(this.dropoutTriggerElement)) {
-      if (this.dropoutPlacement === DropoutPlacement.HORIZONTAL_LEFT_BOTTOM) {
-        this.style[ 'left' ] = `${this.dropoutTriggerElement.offsetLeft}px`;
-        this.style[ 'top' ] = `${this.dropoutTriggerElement.offsetHeight + this.dropoutTriggerElement.offsetTop}px`;
+      const triggerElementDimensions = DropoutTriggerElementDimensions.from(this.dropoutTriggerElement);
+      const coordinates = DropoutPositioningHelper.calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions);
+      if (coordinates.right !== undefined) {
+        this.style['right'] = `${coordinates.right}px`;
       }
-      if (this.dropoutPlacement === DropoutPlacement.HORIZONTAL_RIGHT_BOTTOM) {
-        this.style[ 'right' ] = `${windowWidth - this.dropoutTriggerElement.offsetWidth - this.dropoutTriggerElement.offsetLeft}px`;
-        this.style[ 'top' ] = `${this.dropoutTriggerElement.offsetHeight + this.dropoutTriggerElement.offsetTop}px`;
+      if (coordinates.left !== undefined) {
+        this.style['left'] = `${coordinates.left}px`;
+      }
+      if (coordinates.top !== undefined) {
+        this.style['top'] = `${coordinates.top}px`;
+      }
+      if (coordinates.bottom !== undefined) {
+        this.style['bottom'] = `${coordinates.bottom}px`;
       }
     }
   }
@@ -63,7 +70,8 @@ export class CloukitDropoutContainerComponent implements OnInit {
    */
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.repositionRelativeToTriggerElement(event.target.innerWidth);
+    this.repositionRelativeToTriggerElement(
+      new DropoutViewPortDimensions(event.target.innerWidth, event.target.innerHeight));
   }
 }
 

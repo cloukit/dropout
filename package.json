@@ -2,7 +2,7 @@
   "COMMENT": "THIS FILE WILL BE PARSED DURING BUILD. IT IS NOT THE ACTUAL PACKAGE FILE PUSHE TO NPMJS!",
   "name": "@cloukit/dropout",
   "moduleId": "dropout",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Dropout is a non visible helper to drop something down, up, left or right relative to a trigger element",
   "license": "MIT",
   "author": "codelcou.io",
@@ -15,12 +15,12 @@
     "build:demo": "node ./node_modules/@cloukit/library-build-chain/build.js --demo --install",
     "start:demo": "node ./node_modules/@cloukit/library-build-chain/build.js --demo --run",
     "watch": "node ./node_modules/@cloukit/library-build-chain/build.js --watch",
-    "test": "echo \"ok\""
+    "test": "./node_modules/mocha/bin/mocha  --timeout 8000 --exit -r ts-node/register ./src/logic/*.spec.ts"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "@cloukit/library-build-chain": "1.7.0"
+    "@cloukit/library-build-chain": "1.7.1"
   },
   "peerDependencies": {
     "@angular/common": ">=4.0.0",

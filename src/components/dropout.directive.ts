@@ -24,7 +24,7 @@ export class CloukitDropoutDirective implements OnInit {
   cloukitDropoutClose: Subject<boolean>;
 
   @Input('cloukitDropoutPlacement')
-  cloukitDropoutPlacement: DropoutPlacement = DropoutPlacement.HORIZONTAL_LEFT_BOTTOM;
+  cloukitDropoutPlacement: DropoutPlacement = DropoutPlacement.DOWN_LEFT;
 
   @Input('cloukitDropoutZIndex')
   cloukitDropoutZIndex: number;

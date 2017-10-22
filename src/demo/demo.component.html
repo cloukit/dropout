@@ -1,5 +1,5 @@
 <cloukit-dropout-outlet></cloukit-dropout-outlet>
-<div style="padding:30px;display:flex;" class="demo">
+<div style="padding:30px;display:flex;">
   <div style="flex:1;">
     column 1 dummy text
   </div>
@@ -21,7 +21,7 @@
         [cloukitDropout]="myModal1"
         [cloukitDropoutClose]="myModal1Close"
         [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
-        [cloukitDropoutPlacement]="DropoutPlacement.HORIZONTAL_RIGHT_BOTTOM"
+        [cloukitDropoutPlacement]="DropoutPlacement.LEFT_TOP"
         [cloukitDropoutZIndex]="500"
         (cloukitDropoutActive)="dropout1Active=$event"
       >
@@ -40,13 +40,25 @@
     <br>
     <br>
 
-    <ng-template #myTooltip1>
-      <div class="demoTooltip">A traditional german sausage</div>
+    <ng-template #demoTooltip>
+      <div class="demoTooltipCenter">A traditional german sausage</div>
     </ng-template>
     There is a thing called
-    <span class="tooltip" [cloukitDropout]="myTooltip1">Bratwurst</span>
+    <span
+      class="tooltipTrigger"
+      [cloukitDropout]="demoTooltip"
+      [cloukitDropoutPlacement]="DropoutPlacement.UP_CENTER"
+    >
+      Bratwurst
+    </span>
     which you should know. Hover the
-    <span class="tooltip" [cloukitDropout]="myTooltip1">Bratwurst</span>
+    <span
+      class="tooltipTrigger"
+      [cloukitDropout]="demoTooltip"
+      [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
+    >
+      Bratwurst
+    </span>
     to see onmouseover dropout.
 
   </div>

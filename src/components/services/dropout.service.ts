@@ -5,7 +5,7 @@
  */
 import { ComponentRef, Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { DropoutComponentCreationRequest, DropoutComponentRefId } from '../dropout.model';
+import { DropoutComponentCreationRequest, DropoutComponentRefId, DropoutViewPortDimensions } from '../dropout.model';
 import { CloukitDropoutContainerComponent } from '../children/dropout-container.component';
 
 @Injectable()
@@ -48,7 +48,7 @@ export class DropoutService {
     dropoutRef.instance.dropoutTriggerElement = request.triggerElement;
     dropoutRef.instance.dropoutPlacement = request.placement;
     dropoutRef.instance.dropoutZIndex = request.zIndex;
-    dropoutRef.instance.repositionRelativeToTriggerElement(window.innerWidth);
+    dropoutRef.instance.repositionRelativeToTriggerElement(new DropoutViewPortDimensions(window.innerWidth, window.innerHeight));
     self._dropoutComponentCreationRequests.delete(id);
     self._dropoutComponents.set(id, dropoutRef);
     return id;

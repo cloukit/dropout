@@ -1,5 +1,3 @@
-### Note
-
 The **dropout is the basis component for higher level components like Modal, Tooltip, Toastr and Dropdown**.
 Only use it directly, if those higher level components don't solve your problems.
 

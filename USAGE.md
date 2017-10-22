@@ -52,6 +52,6 @@ Inside your main bootstrap components (e.g. `app-component.html`) template you s
 ```
 
 That way the outlet is at x=0,y=0 pixels and all the dropouts will be placed correctly.
-Why do it that way? I am aware of the possibility to get the rootElement, but this is in my
-opinion a hacky way of doing things and that is why we use the outlet to do so in a clean way.
+Why do it that way? I am aware of the possibility to get the `rootElement` via the `ApplicationRef`, 
+but this is in my opinion a hacky way of doing things and that is why we use the outlet to do so in a clean way.
 

@@ -10,10 +10,21 @@
 ------
 ------
 
-You can position the **dropout container** in the following ways:
+&nbsp;
+
+#### Positioning
+
+You can **position the dropout container** in the following ways:
 
 cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning.svg
 
+But what about **"real centering"**?
+
+cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning-centering.svg
+
+&nbsp;
+
+#### Dropout Outlet
 
 It is very important to place the **cloukit-dropout-outlet** at the top of your root component.
 The root component and your body should have `margin:0` and `padding:0`. Otherwise the absolute placed 
@@ -34,3 +45,4 @@ The root component and your body should have `margin:0` and `padding:0`. Otherwi
 ```html
 <cloukit-dropout-outlet></cloukit-dropout-outlet>
 ```
+

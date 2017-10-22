@@ -42,8 +42,16 @@ The root component and your body should have `margin:0` and `padding:0`. Otherwi
 </html>
 ```
 
-`app-component.html`
+Inside your main bootstrap components (e.g. `app-component.html`) template you say:
+
 ```html
 <cloukit-dropout-outlet></cloukit-dropout-outlet>
+<div style="padding:50px">
+  other stuff
+</div>
 ```
+
+That way the outlet is at x=0,y=0 pixels and all the dropouts will be placed correctly.
+Why do it that way? I am aware of the possibility to get the rootElement, but this is in my
+opinion a hacky way of doing things and that is why we use the outlet to do so in a clean way.
 

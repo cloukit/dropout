@@ -7,7 +7,7 @@ import {
   DropoutPlacement,
   DropoutContainerCoordinates,
   DropoutTriggerElementDimensions,
-  DropoutViewPortDimensions,
+  DropoutViewPortDimensions, DropoutOutletDimensions,
 } from '../components/dropout.model';
 
 export class DropoutPositioningHelper {
@@ -23,7 +23,8 @@ export class DropoutPositioningHelper {
    */
   public static calculate(placement: DropoutPlacement,
                           triggerElementDimensions: DropoutTriggerElementDimensions,
-                          viewPortDimensions: DropoutViewPortDimensions): DropoutContainerCoordinates {
+                          viewPortDimensions: DropoutViewPortDimensions,
+                          outletDimensions: DropoutOutletDimensions): DropoutContainerCoordinates {
     const ret = new DropoutContainerCoordinates();
     const vAutoLeftRight= () => {
       if (triggerElementDimensions.y < viewPortDimensions.height * 0.5) {
@@ -47,8 +48,8 @@ export class DropoutPositioningHelper {
       }
     };
     if (placement === DropoutPlacement.DOWN_LEFT) {
-      ret.left = triggerElementDimensions.x;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height;
+      ret.left = triggerElementDimensions.x - outletDimensions.x;
+      ret.top = triggerElementDimensions.y + triggerElementDimensions.height - outletDimensions.y;
     } else if (placement === DropoutPlacement.DOWN_RIGHT) {
       ret.right = viewPortDimensions.width - triggerElementDimensions.x - triggerElementDimensions.width;
       ret.top = triggerElementDimensions.y + triggerElementDimensions.height;

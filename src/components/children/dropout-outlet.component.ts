@@ -3,17 +3,18 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit } from '@angular/core';
 import { DropoutService } from '../services/dropout.service';
+import { DropoutOutletDimensions } from '../dropout.model';
 
 @Component({
   selector: 'cloukit-dropout-outlet',
   template: `
-    <div style="position:relative;">
+    <div #outlet style="position:relative;">
       <ng-container #vc></ng-container>
     </div>`,
 })
-export class CloukitDropoutOutletComponent {
+export class CloukitDropoutOutletComponent implements OnInit {
 
   /**
    * ViewChild ref of the <ng-container>.
@@ -21,11 +22,24 @@ export class CloukitDropoutOutletComponent {
    */
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
 
-  constructor(private dropoutService: DropoutService) {
+  /**
+   * The outlet itself. I the outlet does not sit at x=0 and y=0
+   * we can use the nativeElement to get the offset and recalculate the
+   * placements of the dropout containers.s
+   */
+  @ViewChild('outlet') outlet: ElementRef;
+
+  constructor(private dropoutService: DropoutService) {}
+
+  ngOnInit() {
     const self = this;
     self.dropoutService.dropoutComponentCreationRequests
       .subscribe(id => {
-        self.dropoutService.createDropout(id, self.vc)
+        self.dropoutService
+          .createDropout(id,
+            self.vc,
+            new DropoutOutletDimensions(this.outlet.nativeElement.offsetLeft, this.outlet.nativeElement.offsetTop)
+          );
       });
   }
 

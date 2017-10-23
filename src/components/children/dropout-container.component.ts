@@ -5,16 +5,19 @@
  */
 import { Component, HostListener, Input, OnInit, TemplateRef } from '@angular/core';
 import { isNullOrUndefined } from 'util';
-import { DropoutPlacement, DropoutTriggerElementDimensions, DropoutViewPortDimensions } from '../dropout.model';
+import {
+  DropoutOutletDimensions, DropoutPlacement, DropoutTriggerElementDimensions,
+  DropoutViewPortDimensions,
+} from '../dropout.model';
 import { DropoutPositioningHelper } from '../../logic/dropout-positioning-helper';
 
 /**
- * The Dropout Body can be anything from a Tooltip, Modal to a Dropdown.
+ * The Dropout Container can be anything from a Tooltip, Modal to a Dropdown.
  * It is basically all the same thing. An absolute positioned element.
  * Just the size, appearance and open/close events are different.
  */
 @Component({
-  selector: 'cloukit-dropout-body',
+  selector: 'cloukit-dropout-container',
   template: `
     <div [ngStyle]="style">
       <ng-container *ngTemplateOutlet="dropoutBodyTemplateRef"></ng-container>
@@ -34,6 +37,9 @@ export class CloukitDropoutContainerComponent implements OnInit {
   @Input()
   public dropoutZIndex: number;
 
+  @Input()
+  public outletDimensions: DropoutOutletDimensions;
+
   public style = {
     position: 'absolute',
     zIndex: 300,
@@ -48,7 +54,8 @@ export class CloukitDropoutContainerComponent implements OnInit {
   public repositionRelativeToTriggerElement(viewPortDimensions: DropoutViewPortDimensions) {
     if (!isNullOrUndefined(this.dropoutTriggerElement)) {
       const triggerElementDimensions = DropoutTriggerElementDimensions.from(this.dropoutTriggerElement);
-      const coordinates = DropoutPositioningHelper.calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions);
+      const coordinates = DropoutPositioningHelper
+        .calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions, this.outletDimensions);
       if (coordinates.right !== undefined) {
         this.style['right'] = `${coordinates.right}px`;
       }

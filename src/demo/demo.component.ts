@@ -9,8 +9,8 @@ import { DropoutPlacement, DropoutTrigger } from '../index';
     `.demoModal1 {
       font-family: sans-serif;
       padding: 10px;
-      width: 400px;
-      height: 200px;
+      width: 200px;
+      height: 100px;
       border: 3px solid #68c1ff;
       background-color: #A4E3FE;
       color: #333;
@@ -43,6 +43,7 @@ export class DemoComponent {
   // Make enums available in template
   DropoutPlacement = DropoutPlacement;
   DropoutTrigger = DropoutTrigger;
+  dropoutRollingPlacement: DropoutPlacement = DropoutPlacement.DOWN_LEFT;
 
   icon = {
     down: '254.4375 476.3125 463.515625 239.902344 45.359375 239.902344',
@@ -54,6 +55,15 @@ export class DemoComponent {
 
   closeModal1() {
     this.myModal1Close.next(true);
+  }
+
+  rollPlacement() {
+    if (!this.dropout1Active) {
+      this.dropoutRollingPlacement = this.dropoutRollingPlacement + 1;
+      if (this.dropoutRollingPlacement > 22) {
+        this.dropoutRollingPlacement = 1;
+      }
+    }
   }
 
   constructor() {

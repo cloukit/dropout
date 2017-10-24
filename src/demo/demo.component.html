@@ -5,68 +5,64 @@
   <!-- But if you can place the outlet at x=0 and y=0 to avoid
        possible misplacements of the dropout containers -->
 
-  <div style="display:flex;">
-    <div style="flex:1;">
-      column 1 dummy text
-    </div>
-    <div style="flex:2;">
-      <ng-template #myModal1>
-        <div class="demoModal1">
-          I am a nice dropdown thingy or whatever ...
-          <br><br>
-          <button
-            type="button"
-            class="demoButton"
-            (click)="closeModal1()"
-          >You can close me from the inside</button>
-        </div>
-      </ng-template>
-      <div style="text-align: center">
+  <div style="padding-top:130px;">
+    <ng-template #myModal1>
+      <div class="demoModal1">
+        I am placed<br> {{DropoutPlacement[dropoutRollingPlacement]}}
+        <br><br>
         <button
+          type="button"
           class="demoButton"
-          [cloukitDropout]="myModal1"
-          [cloukitDropoutClose]="myModal1Close"
-          [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
-          [cloukitDropoutPlacement]="DropoutPlacement.DOWN_RIGHT"
-          [cloukitDropoutZIndex]="500"
-          (cloukitDropoutActive)="dropout1Active=$event"
-        >
-          <svg style="width:20px" viewBox="0 0 512 512">
-            <g stroke="none" fill="#ffffff" fill-rule="evenodd">
-              <polygon
-                [attr.points]="dropout1Active ? icon.down : icon.right"
-              ></polygon>
-            </g>
-          </svg>
-          Click me to show Dropdown
-        </button>
+          (click)="closeModal1()"
+        >close me</button>
       </div>
-
-      <br>
-      <br>
-      <br>
-
-      <ng-template #demoTooltip>
-        <div class="demoTooltipCenter">A traditional german sausage</div>
-      </ng-template>
-      There is a thing called
-      <span
-        class="tooltipTrigger"
-        [cloukitDropout]="demoTooltip"
-        [cloukitDropoutPlacement]="DropoutPlacement.UP_CENTER"
+    </ng-template>
+    <div style="text-align: center">
+      <button
+        class="demoButton"
+        [cloukitDropout]="myModal1"
+        [cloukitDropoutClose]="myModal1Close"
+        [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
+        [cloukitDropoutPlacement]="dropoutRollingPlacement"
+        [cloukitDropoutZIndex]="500"
+        (cloukitDropoutActive)="dropout1Active=$event"
+        (click)="rollPlacement()"
       >
-        Bratwurst
-      </span>
-      which you should know. Hover the
-      <span
-        class="tooltipTrigger"
-        [cloukitDropout]="demoTooltip"
-        [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
-      >
-        Bratwurst
-      </span>
-      to see onmouseover dropout.
-
+        <svg style="width:20px" viewBox="0 0 512 512">
+          <g stroke="none" fill="#ffffff" fill-rule="evenodd">
+            <polygon
+              [attr.points]="dropout1Active ? icon.down : icon.right"
+            ></polygon>
+          </g>
+        </svg>
+        click me
+      </button>
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    <ng-template #demoTooltip>
+      <div class="demoTooltipCenter">A traditional german sausage</div>
+    </ng-template>
+    There is a thing called
+    <span
+      class="tooltipTrigger"
+      [cloukitDropout]="demoTooltip"
+      [cloukitDropoutPlacement]="DropoutPlacement.UP_CENTER"
+    >
+      Bratwurst
+    </span>
+    which you should know. Hover the
+    <span
+      class="tooltipTrigger"
+      [cloukitDropout]="demoTooltip"
+      [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
+    >
+      Bratwurst
+    </span>
+    to see onmouseover dropout.
+
   </div>
 </div>

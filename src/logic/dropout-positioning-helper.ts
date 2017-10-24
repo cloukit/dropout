@@ -15,92 +15,87 @@ export class DropoutPositioningHelper {
   /**
    * The triggerElement and the dropout container are placed inside the viewPort.
    * We need to calculate the containerCoordinates based on several conditions.
-   *
-   * @param {DropoutPlacement} placement
-   * @param {DropoutTriggerElementDimensions} triggerElementDimensions
-   * @param {DropoutViewPortDimensions} viewPortDimensions
-   * @returns {DropoutContainerCoordinates}
    */
   public static calculate(placement: DropoutPlacement,
-                          triggerElementDimensions: DropoutTriggerElementDimensions,
-                          viewPortDimensions: DropoutViewPortDimensions,
-                          outletDimensions: DropoutOutletDimensions): DropoutContainerCoordinates {
+                          trigger: DropoutTriggerElementDimensions,
+                          viewPort: DropoutViewPortDimensions,
+                          outlet: DropoutOutletDimensions): DropoutContainerCoordinates {
     const ret = new DropoutContainerCoordinates();
     const vAutoLeftRight= () => {
-      if (triggerElementDimensions.y < viewPortDimensions.height * 0.5) {
-        ret.top = triggerElementDimensions.y + triggerElementDimensions.height;
+      if (trigger.y < viewPort.height * 0.5) {
+        ret.top = trigger.y + trigger.height;
       } else {
-        ret.bottom = (-1) * triggerElementDimensions.y;
+        ret.bottom = (-1) * trigger.y;
       }
     };
     const leftRightVAuto = () => {
-      if (triggerElementDimensions.y < viewPortDimensions.height * 0.5) {
-        ret.top = triggerElementDimensions.y;
+      if (trigger.y < viewPort.height * 0.5) {
+        ret.top = trigger.y;
       } else {
-        ret.bottom = (-1) * (triggerElementDimensions.y + triggerElementDimensions.height);
+        ret.bottom = (-1) * (trigger.y + trigger.height);
       }
     };
     const hAuto = () => {
-      if (triggerElementDimensions.x < viewPortDimensions.width * 0.5) {
-        ret.left = triggerElementDimensions.x + triggerElementDimensions.width;
+      if (trigger.x < viewPort.width * 0.5) {
+        ret.left = trigger.x + trigger.width;
       } else {
-        ret.right = viewPortDimensions.width - triggerElementDimensions.x;
+        ret.right = viewPort.width - trigger.x;
       }
     };
     if (placement === DropoutPlacement.DOWN_LEFT) {
-      ret.left = triggerElementDimensions.x - outletDimensions.x;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height - outletDimensions.y;
+      ret.left = trigger.x;
+      ret.top = trigger.y + trigger.height;
     } else if (placement === DropoutPlacement.DOWN_RIGHT) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x - triggerElementDimensions.width;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height;
+      ret.right = viewPort.width - trigger.x - trigger.width;
+      ret.top = trigger.y + trigger.height;
     } else if (placement === DropoutPlacement.UP_LEFT) {
-      ret.left = triggerElementDimensions.x;
-      ret.bottom = (-1) * triggerElementDimensions.y;
+      ret.left = trigger.x;
+      ret.bottom = (-1) * trigger.y;
     } else if (placement === DropoutPlacement.UP_RIGHT) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x - triggerElementDimensions.width;
-      ret.bottom = (-1) * triggerElementDimensions.y;
+      ret.right = viewPort.width - trigger.x - trigger.width;
+      ret.bottom = (-1) * trigger.y;
     } else if (placement === DropoutPlacement.VAUTO_LEFT) {
-      ret.left = triggerElementDimensions.x;
+      ret.left = trigger.x;
       vAutoLeftRight();
     } else if (placement === DropoutPlacement.VAUTO_RIGHT) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x - triggerElementDimensions.width;
+      ret.right = viewPort.width - trigger.x - trigger.width;
       vAutoLeftRight();
     } else if (placement === DropoutPlacement.DOWN_CENTER) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width / 2;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height;
+      ret.left = trigger.x + trigger.width / 2;
+      ret.top = trigger.y + trigger.height;
     } else if (placement === DropoutPlacement.UP_CENTER) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width / 2;
-      ret.bottom = (-1) * (triggerElementDimensions.y);
+      ret.left = trigger.x + trigger.width / 2;
+      ret.bottom = (-1) * (trigger.y);
     } else if (placement === DropoutPlacement.VAUTO_CENTER) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width / 2;
+      ret.left = trigger.x + trigger.width / 2;
       vAutoLeftRight();
     } else if (placement === DropoutPlacement.LEFT_TOP) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x;
-      ret.top = triggerElementDimensions.y;
+      ret.right = viewPort.width - trigger.x;
+      ret.top = trigger.y;
     } else if (placement === DropoutPlacement.LEFT_BOTTOM) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x;
-      ret.bottom = (-1) * (triggerElementDimensions.y + triggerElementDimensions.height);
+      ret.right = viewPort.width - trigger.x;
+      ret.bottom = (-1) * (trigger.y + trigger.height);
     } else if (placement === DropoutPlacement.LEFT_VAUTO) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x;
+      ret.right = viewPort.width - trigger.x;
       leftRightVAuto();
     } else if (placement === DropoutPlacement.RIGHT_TOP) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width;
-      ret.top = triggerElementDimensions.y;
+      ret.left = trigger.x + trigger.width;
+      ret.top = trigger.y;
     } else if (placement === DropoutPlacement.RIGHT_BOTTOM) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width;
-      ret.bottom = (-1) * (triggerElementDimensions.y + triggerElementDimensions.height);
+      ret.left = trigger.x + trigger.width;
+      ret.bottom = (-1) * (trigger.y + trigger.height);
     } else if (placement === DropoutPlacement.RIGHT_VAUTO) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width;
+      ret.left = trigger.x + trigger.width;
       leftRightVAuto();
     } else if (placement === DropoutPlacement.LEFT_CENTER) {
-      ret.right = viewPortDimensions.width - triggerElementDimensions.x;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height / 2;
+      ret.right = viewPort.width - trigger.x;
+      ret.top = trigger.y + trigger.height / 2;
     } else if (placement === DropoutPlacement.RIGHT_CENTER) {
-      ret.left = triggerElementDimensions.x + triggerElementDimensions.width;
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height / 2;
+      ret.left = trigger.x + trigger.width;
+      ret.top = trigger.y + trigger.height / 2;
     } else if (placement === DropoutPlacement.HAUTO_CENTER) {
       hAuto();
-      ret.top = triggerElementDimensions.y + triggerElementDimensions.height / 2;
+      ret.top = trigger.y + trigger.height / 2;
     } else if (placement === DropoutPlacement.FIX_TOP_LEFT) {
       ret.top = 0;
       ret.left = 0;
@@ -108,13 +103,30 @@ export class DropoutPositioningHelper {
       ret.top = 0;
       ret.right = 0;
     } else if (placement === DropoutPlacement.FIX_BOTTOM_LEFT) {
-      ret.bottom = (-1) * viewPortDimensions.height;
+      ret.bottom = (-1) * viewPort.height;
       ret.left = 0;
     } else if (placement === DropoutPlacement.FIX_BOTTOM_RIGHT) {
-      ret.bottom = (-1) * viewPortDimensions.height;
+      ret.bottom = (-1) * viewPort.height;
       ret.right = 0;
     }
 
+    //
+    // ADJUST TO OFFSET OUTLET
+    //
+    if (ret.left !== undefined) {
+      ret.left = ret.left - outlet.x;
+    }
+    if (ret.top !== undefined) {
+      ret.top = ret.top - outlet.y;
+    }
+    if (ret.right !== undefined) {
+      const offsetRight = viewPort.width - outlet.x - outlet.width;
+      ret.right = ret.right - offsetRight;
+    }
+    if (ret.bottom !== undefined) {
+      const offsetBottom = outlet.y - outlet.height;
+      ret.bottom = ret.bottom + offsetBottom;
+    }
     return ret;
   }
 }

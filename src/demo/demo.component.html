@@ -1,4 +1,4 @@
-<div style="padding:30px;">
+<div style="padding-top:30px;padding-left:30px;padding-right:60px;padding-bottom:90px;">
   <!-- Even when the outlet cannot be placed at x=0 and y=0
        it still works. Because the offset is subtracted. -->
   <cloukit-dropout-outlet></cloukit-dropout-outlet>
@@ -21,13 +21,13 @@
           >You can close me from the inside</button>
         </div>
       </ng-template>
-      <div style="text-align: right">
+      <div style="text-align: center">
         <button
           class="demoButton"
           [cloukitDropout]="myModal1"
           [cloukitDropoutClose]="myModal1Close"
           [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
-          [cloukitDropoutPlacement]="DropoutPlacement.LEFT_TOP"
+          [cloukitDropoutPlacement]="DropoutPlacement.DOWN_RIGHT"
           [cloukitDropoutZIndex]="500"
           (cloukitDropoutActive)="dropout1Active=$event"
         >

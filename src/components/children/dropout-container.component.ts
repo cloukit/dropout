@@ -38,7 +38,7 @@ export class CloukitDropoutContainerComponent implements OnInit {
   public dropoutZIndex: number;
 
   @Input()
-  public outletDimensions: DropoutOutletDimensions;
+  public outlet: HTMLElement;
 
   public style = {
     position: 'absolute',
@@ -55,7 +55,7 @@ export class CloukitDropoutContainerComponent implements OnInit {
     if (!isNullOrUndefined(this.dropoutTriggerElement)) {
       const triggerElementDimensions = DropoutTriggerElementDimensions.from(this.dropoutTriggerElement);
       const coordinates = DropoutPositioningHelper
-        .calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions, this.outletDimensions);
+        .calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions, DropoutOutletDimensions.from(this.outlet));
       if (coordinates.right !== undefined) {
         this.style['right'] = `${coordinates.right}px`;
       }

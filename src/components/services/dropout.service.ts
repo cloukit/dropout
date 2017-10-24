@@ -39,7 +39,7 @@ export class DropoutService {
   }
 
   /** CALLED FROM OUTLET! */
-  public createDropout(id: DropoutComponentRefId, viewContainerRef: ViewContainerRef, outletDimensions: DropoutOutletDimensions): DropoutComponentRefId {
+  public createDropout(id: DropoutComponentRefId, viewContainerRef: ViewContainerRef, outlet: HTMLElement): DropoutComponentRefId {
     const self = this;
     const componentFactory = self.componentFactoryResolver.resolveComponentFactory(CloukitDropoutContainerComponent);
     const dropoutRef = viewContainerRef.createComponent(componentFactory);
@@ -51,7 +51,7 @@ export class DropoutService {
     dropoutRef.instance.dropoutTriggerElement = request.triggerElement;
     dropoutRef.instance.dropoutPlacement = request.placement;
     dropoutRef.instance.dropoutZIndex = request.zIndex;
-    dropoutRef.instance.outletDimensions = outletDimensions;
+    dropoutRef.instance.outlet = outlet;
     dropoutRef.instance.repositionRelativeToTriggerElement(new DropoutViewPortDimensions(window.innerWidth, window.innerHeight));
     self._dropoutComponentCreationRequests.delete(id);
     self._dropoutComponents.set(id, dropoutRef);

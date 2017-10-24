@@ -74,23 +74,7 @@ export class DropoutViewPortDimensions {
   }
 }
 
-/**
- * How big the offset of the outlet is in pixels
- */
-export class DropoutOutletDimensions {
-  public x: number;
-  public y: number;
-  constructor(_x: number, _y: number) {
-    this.x = _x;
-    this.y = _y;
-  }
-}
-
-
-/**
- * Dimensons of the trigger element in pixels
- */
-export class DropoutTriggerElementDimensions {
+export class GenericDimensions {
   public x: number;
   public y: number;
   public width: number;
@@ -110,3 +94,6 @@ export class DropoutTriggerElementDimensions {
     );
   }
 }
+
+export class DropoutTriggerElementDimensions extends GenericDimensions { }
+export class DropoutOutletDimensions extends GenericDimensions { }

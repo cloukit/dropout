@@ -38,7 +38,7 @@ export class CloukitDropoutOutletComponent implements OnInit {
         self.dropoutService
           .createDropout(id,
             self.vc,
-            new DropoutOutletDimensions(this.outlet.nativeElement.offsetLeft, this.outlet.nativeElement.offsetTop)
+            this.outlet.nativeElement
           );
       });
   }

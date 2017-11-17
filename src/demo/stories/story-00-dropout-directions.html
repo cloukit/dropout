@@ -1,0 +1,32 @@
+<ng-template #myModal1>
+  <div class="demoModal1">
+    I am placed<br> {{DropoutPlacement[dropoutRollingPlacement]}}
+    <br><br>
+    <button
+      type="button"
+      class="demoButton"
+      (click)="closeModal1()"
+    >close me</button>
+  </div>
+</ng-template>
+<div style="text-align: center;margin-top:100px;margin-bottom:100px;">
+  <button
+    class="demoButton"
+    [cloukitDropout]="myModal1"
+    [cloukitDropoutClose]="myModal1Close"
+    [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
+    [cloukitDropoutPlacement]="dropoutRollingPlacement"
+    [cloukitDropoutZIndex]="500"
+    (cloukitDropoutActive)="dropout1Active=$event"
+    (click)="rollPlacement()"
+  >
+    <svg style="width:20px" viewBox="0 0 512 512">
+      <g stroke="none" fill="#ffffff" fill-rule="evenodd">
+        <polygon
+          [attr.points]="dropout1Active ? icon.down : icon.right"
+        ></polygon>
+      </g>
+    </svg>
+    click me
+  </button>
+</div>

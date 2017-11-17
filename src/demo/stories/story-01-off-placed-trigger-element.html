@@ -1,0 +1,45 @@
+<ng-template #demoTooltip>
+  <div class="demoTooltipCenter">A traditional german sausage</div>
+</ng-template>
+There is a thing called
+<span
+  class="tooltipTrigger"
+  [cloukitDropout]="demoTooltip"
+  [cloukitDropoutPlacement]="DropoutPlacement.UP_CENTER"
+>
+  Bratwurst
+</span>
+which you should know. Hover the
+<span
+  class="tooltipTrigger"
+  [cloukitDropout]="demoTooltip"
+  [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
+>
+  Bratwurst
+</span>
+to see onmouseover dropout.
+
+<br><br>
+<br><br>
+
+If you have e.g. a flexbox thingy with scroll-y and inside is your trigger element then the placement should work as well.
+<br><br>
+
+<div style="display:flex;">
+  <div style="flex:1;border:1px solid #ccc;">foo</div>
+  <div style="flex:3;height:150px;overflow-y:scroll;border:1px solid #ccc;padding:30px;">
+    Line 1<br><br>
+    Line 2<br><br>
+    Line 3<br><br>
+    Line 4<br><br>
+    Line 5<br><br>
+    <span
+      class="tooltipTrigger"
+      [cloukitDropout]="demoTooltip"
+      [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
+    >
+      Bratwurst
+    </span>
+  </div>
+
+</div>

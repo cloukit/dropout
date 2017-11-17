@@ -2,13 +2,36 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoComponent } from './demo.component';
 import { CloukitDropoutModule } from '../index';
+import demoStoriesSource from '../assets/demoStoriesSource.json';
+import { CloukitStoryModule, CloukitStoryService } from '@cloukit/story';
+import { Story00Component } from './stories/story-00-dropout-directions';
+import { Story01Component } from './stories/story-01-off-placed-trigger-element';
 
 @NgModule({
-  declarations: [ DemoComponent ],
-  exports: [ DemoComponent ],
-  imports: [ CommonModule, CloukitDropoutModule ],
+  declarations: [
+    DemoComponent,
+    Story00Component,
+    Story01Component,
+  ],
+  exports: [
+    DemoComponent,
+  ],
+  imports: [
+    CommonModule,
+    CloukitStoryModule,
+    CloukitDropoutModule,
+  ],
   providers: [ ],
   bootstrap: [ ]
 })
 export class DemoModule {
+  constructor(private cloukitStoryService: CloukitStoryService) {
+    //
+    // REGISTER STORY SOURCES
+    //
+    const keys = Object.keys(demoStoriesSource);
+    for (let i=0; i<keys.length; i++) {
+      this.cloukitStoryService.addSource(keys[i], demoStoriesSource[keys[i]]);
+    }
+  }
 }

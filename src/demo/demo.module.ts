@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DemoComponent } from './demo.component';
 import { CloukitDropoutModule } from '../index';
@@ -18,6 +19,7 @@ import { Story01Component } from './stories/story-01-off-placed-trigger-element'
   ],
   imports: [
     CommonModule,
+    FormsModule,
     CloukitStoryModule,
     CloukitDropoutModule,
   ],

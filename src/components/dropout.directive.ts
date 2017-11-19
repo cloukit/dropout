@@ -9,6 +9,7 @@ import {
 import { DropoutService } from './services/dropout.service';
 import { Subject } from 'rxjs/Subject';
 import { DropoutComponentCreationRequest, DropoutComponentRefId, DropoutPlacement, DropoutTrigger } from './dropout.model';
+import { Observable } from 'rxjs/Observable';
 
 @Directive({
   selector: '[cloukitDropout]',
@@ -21,7 +22,10 @@ export class CloukitDropoutDirective implements OnInit {
   cloukitDropoutTrigger: DropoutTrigger = DropoutTrigger.ONMOUSEOVER;
 
   @Input('cloukitDropoutClose')
-  cloukitDropoutClose: Subject<boolean>;
+  cloukitDropoutClose: Observable<boolean>;
+
+  @Input('cloukitDropoutReposition')
+  cloukitDropoutReposition: Observable<boolean>;
 
   @Input('cloukitDropoutPlacement')
   cloukitDropoutPlacement: DropoutPlacement = DropoutPlacement.DOWN_LEFT;
@@ -57,9 +61,14 @@ export class CloukitDropoutDirective implements OnInit {
 
   ngOnInit() {
     const self = this;
-    if (self.cloukitDropoutClose instanceof Subject) {
+    if (self.cloukitDropoutClose instanceof Observable) {
       self.cloukitDropoutClose.subscribe(() => {
         self._doDeactivate();
+      });
+    }
+    if (self.cloukitDropoutReposition instanceof Observable) {
+      self.cloukitDropoutReposition.subscribe(() => {
+        self.dropoutService.forceReposition(self.dropoutRef);
       });
     }
   }

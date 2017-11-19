@@ -1,45 +1,62 @@
-<ng-template #demoTooltip>
-  <div class="demoTooltipCenter">A traditional german sausage</div>
+<ng-template #demoModal>
+  <div class="modal">A traditional german sausage</div>
 </ng-template>
-There is a thing called
-<span
-  class="tooltipTrigger"
-  [cloukitDropout]="demoTooltip"
-  [cloukitDropoutPlacement]="DropoutPlacement.UP_CENTER"
->
-  Bratwurst
-</span>
-which you should know. Hover the
-<span
-  class="tooltipTrigger"
-  [cloukitDropout]="demoTooltip"
-  [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
->
-  Bratwurst
-</span>
-to see onmouseover dropout.
-
-<br><br>
-<br><br>
-
-If you have e.g. a flexbox thingy with scroll-y and inside is your trigger element then the placement should work as well.
-<br><br>
 
 <div style="display:flex;">
-  <div style="flex:1;border:1px solid #ccc;">foo</div>
-  <div style="flex:3;height:150px;overflow-y:scroll;border:1px solid #ccc;padding:30px;">
-    Line 1<br><br>
-    Line 2<br><br>
-    Line 3<br><br>
-    Line 4<br><br>
-    Line 5<br><br>
-    <span
-      class="tooltipTrigger"
-      [cloukitDropout]="demoTooltip"
-      [cloukitDropoutPlacement]="DropoutPlacement.DOWN_CENTER"
-    >
-      Bratwurst
-    </span>
+  <div style="flex:1;border:1px solid #ccc;padding:30px;">
+    On Scroll Event of div do either:<br><br>
+    <span (click)="onScroll='close'" style="cursor:pointer">
+      <input
+        type="radio"
+        value="close"
+        [checked]="onScroll === 'close'"
+      > close the modal
+    </span><br>
+    <span (click)="onScroll='reposition'" style="cursor:pointer">
+      <input
+        type="radio"
+        value="reposition"
+        [checked]="onScroll === 'reposition'"
+      > reposition the modal
+    </span><br>
+    <span (click)="onScroll='nothing'" style="cursor:pointer">
+      <input
+        type="radio"
+        value="nothing"
+        [checked]="onScroll === 'nothing'"
+      > do nothing
+    </span><br>
   </div>
-
+  <div
+    style="flex:3;height:150px;overflow-y:scroll;border:1px solid #ccc;padding:30px;"
+    (scroll)="onScrollDiv($event)"
+  >
+    Please scroll down to the Bratwurst. The Dropout opens onClick.<br><br>
+    ...<br><br>
+    ...<br><br>
+    ...<br><br>
+    ...<br><br>
+    ...<br><br>
+    ...<br><br>
+    ...<br><br>
+    <div
+      style="border: 1px solid #ccc; width:200px;"
+      [cloukitDropout]="demoModal"
+      [cloukitDropoutPlacement]="DropoutPlacement.RIGHT_TOP"
+      [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
+      [cloukitDropoutClose]="closeDropout"
+      [cloukitDropoutReposition]="repositionDropout"
+    >
+      <svg class="bratwurst" viewBox="0 0 829 402" xmlns="http://www.w3.org/2000/svg">
+        <!-- Licensed under MIT License to Bernhard Grünewaldt codeclou.io -->
+        <title>
+          the-original-bratwurst
+        </title>
+        <g fill="none" fill-rule="evenodd">
+          <path d="M571.89 276.484c48.477-18.71 160.65-76.64 133.586-132.435-.96-1.98 25.835 20.666 20.28 2.43-5.553-18.238-27.39-41.04-33.108-44.554-5.718-3.515 1.514 25.884 0 24.202-35.044-38.93-62.18-.2-109.366 30.22-25.77 16.614-110.095 44.866-178.427 44.866-59.974 0-125.262-21.683-160.287-49.056-24.41-19.077-68.264-54.573-101.973-32.8-1.593 1.028 3.526-19.836-4.414-19.35-8.316.51-33.413 28.31-34.97 29.97-2.852 3.04 24.316 3.982 21.7 8.135-34.278 54.406 69.45 120.433 117.25 139.33 62.875 24.858 226.807 38.767 329.73-.96z" fill="#BB5803"/>
+          <path d="M571.89 276.484c48.477-18.71 160.65-76.64 133.586-132.435-.96-1.98-8.21 14.678-71.023 58.317-38.648 26.852-114.225 65.346-216.55 65.46-83.4.095-148.08-22.98-214.665-59.878-32.674-18.107-75.712-73.99-78.33-69.837-34.276 54.406 69.452 120.433 117.252 139.33 62.875 24.858 226.807 38.767 329.73-.96z" fill="#A54C00"/>
+        </g>
+      </svg>
+    </div>
+  </div>
 </div>

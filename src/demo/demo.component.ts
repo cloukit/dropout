@@ -8,7 +8,7 @@ import { DropoutPlacement, DropoutTrigger } from '../index';
 })
 export class DemoComponent {
   public static sharedStyles = [
-    `.demoModal1 {
+    `.modal {
       font-family: sans-serif;
       padding: 10px;
       width: 200px;
@@ -25,18 +25,16 @@ export class DemoComponent {
       padding:6px;
       font-size:1rem;
       cursor: pointer;
-    }`,
-    `.demoTooltipCenter {
-      background-color:#A4E3FE;
-      color:#333;
-      border:0;
-      padding:4px;
-      font-size:0.8rem;
-      transform: translate(-50%, 0);
-    }`,
-    `.tooltipTrigger {
-      color:#710ECC;
-      cursor: help;
+    }
+    `,
+    `.box {
+      border:1px solid #ccc;
+      padding:10px;
+    `,
+    `.bratwurst {
+      width:200px;
+      cursor: pointer;
+      user-select: none;
     }`,
   ];
   // Make enums available in template

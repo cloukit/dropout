@@ -65,4 +65,13 @@ export class DropoutService {
       this._dropoutComponents.delete(id);
     }
   }
+
+  public forceReposition(id: DropoutComponentRefId) {
+    const self = this;
+    const dropout = self._dropoutComponents.get(id);
+    if (dropout !== undefined && dropout !== null) {
+      dropout.instance.repositionRelativeToTriggerElement(new DropoutViewPortDimensions(window.innerWidth, window.innerHeight));
+    }
+  }
+
 }

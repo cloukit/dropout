@@ -87,10 +87,10 @@ export class GenericDimensions {
   }
   public static from(htmlElement: HTMLElement) {
     return new DropoutTriggerElementDimensions(
-      htmlElement.offsetLeft,
-      htmlElement.offsetTop,
-      htmlElement.offsetWidth,
-      htmlElement.offsetHeight,
+      htmlElement.getBoundingClientRect().left,
+      htmlElement.getBoundingClientRect().top,
+      htmlElement.getBoundingClientRect().width,
+      htmlElement.getBoundingClientRect().height,
     );
   }
 }

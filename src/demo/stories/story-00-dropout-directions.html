@@ -1,5 +1,5 @@
-<ng-template #myModal1>
-  <div class="demoModal1">
+<ng-template #demoModal>
+  <div class="modal">
     I am placed<br> {{DropoutPlacement[dropoutRollingPlacement]}}
     <br><br>
     <button
@@ -12,7 +12,7 @@
 <div style="text-align: center;margin-top:100px;margin-bottom:100px;">
   <button
     class="demoButton"
-    [cloukitDropout]="myModal1"
+    [cloukitDropout]="demoModal"
     [cloukitDropoutClose]="myModal1Close"
     [cloukitDropoutTrigger]="DropoutTrigger.ONCLICK"
     [cloukitDropoutPlacement]="dropoutRollingPlacement"

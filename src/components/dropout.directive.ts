@@ -6,8 +6,7 @@
 import {
   Directive, TemplateRef, Input, HostListener, ViewContainerRef, EventEmitter, Output, OnInit,
 } from '@angular/core';
-import { DropoutService } from './services/dropout.service';
-import { Subject } from 'rxjs/Subject';
+import { CloukitDropoutService } from './services/dropout.service';
 import { DropoutComponentCreationRequest, DropoutComponentRefId, DropoutPlacement, DropoutTrigger } from './dropout.model';
 import { Observable } from 'rxjs/Observable';
 
@@ -38,7 +37,7 @@ export class CloukitDropoutDirective implements OnInit {
 
   private dropoutRef: DropoutComponentRefId;
 
-  constructor(private dropoutService: DropoutService,
+  constructor(private dropoutService: CloukitDropoutService,
               private viewContainerRef: ViewContainerRef) {
   }
 

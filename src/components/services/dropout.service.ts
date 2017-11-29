@@ -12,7 +12,7 @@ import {
 import { CloukitDropoutContainerComponent } from '../children/dropout-container.component';
 
 @Injectable()
-export class DropoutService {
+export class CloukitDropoutService {
 
   /** Holds references to all ComponentRefs with a automatically generated id */
   private _dropoutComponents = new Map<DropoutComponentRefId, ComponentRef<CloukitDropoutContainerComponent>>();

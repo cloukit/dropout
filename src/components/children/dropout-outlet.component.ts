@@ -4,8 +4,7 @@
  * https://github.com/cloukit/legal
  */
 import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit } from '@angular/core';
-import { DropoutService } from '../services/dropout.service';
-import { DropoutOutletDimensions } from '../dropout.model';
+import { CloukitDropoutService } from '../services/dropout.service';
 
 @Component({
   selector: 'cloukit-dropout-outlet',
@@ -29,7 +28,7 @@ export class CloukitDropoutOutletComponent implements OnInit {
    */
   @ViewChild('outlet') outlet: ElementRef;
 
-  constructor(private dropoutService: DropoutService) {}
+  constructor(private dropoutService: CloukitDropoutService) {}
 
   ngOnInit() {
     const self = this;

@@ -32,6 +32,7 @@ export class CloukitDropoutOutletComponent implements OnInit {
 
   ngOnInit() {
     const self = this;
+    self.dropoutService.setViewContainerRef(self.vc);
     self.dropoutService.dropoutComponentCreationRequests
       .subscribe(id => {
         self.dropoutService

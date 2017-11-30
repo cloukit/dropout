@@ -23,6 +23,8 @@ export class CloukitDropoutService {
   /** subscribe to this to be notified of componentCreationRequests */
   public dropoutComponentCreationRequests: Subject<DropoutComponentRefId> = new Subject<DropoutComponentRefId>();
 
+  private viewContainerRef: ViewContainerRef;
+
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   private generateUuid() {
@@ -36,6 +38,21 @@ export class CloukitDropoutService {
     self._dropoutComponentCreationRequests.set(id, request);
     self.dropoutComponentCreationRequests.next(id);
     return id;
+  }
+
+  /**
+   * ViewContainerRef is injected onInit by outlet.
+   * @param {ViewContainerRef} viewContainerRef
+   */
+  public setViewContainerRef(viewContainerRef: ViewContainerRef): void {
+    this.viewContainerRef = viewContainerRef;
+  }
+
+  /**
+   * ViewContainerRef is injected onInit by outlet.
+   */
+  public getViewContainerRef(): ViewContainerRef {
+    return this.viewContainerRef;
   }
 
   /** CALLED FROM OUTLET! */

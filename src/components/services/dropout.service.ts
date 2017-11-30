@@ -42,7 +42,6 @@ export class CloukitDropoutService {
 
   /**
    * ViewContainerRef is injected onInit by outlet.
-   * @param {ViewContainerRef} viewContainerRef
    */
   public setViewContainerRef(viewContainerRef: ViewContainerRef): void {
     this.viewContainerRef = viewContainerRef;

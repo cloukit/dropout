@@ -91,6 +91,7 @@ export class CloukitDropoutDirective implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.preDestroy.next(true);
+    this._doDeactivate();
   }
 
   @HostListener('click')

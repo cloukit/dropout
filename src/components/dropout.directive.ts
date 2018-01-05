@@ -49,20 +49,23 @@ export class CloukitDropoutDirective implements OnInit, OnDestroy {
   }
 
   _doActivate() {
-    const request = new DropoutComponentCreationRequest();
-    request.triggerElement = this.viewContainerRef.element.nativeElement;
-    request.template = this.cloukitDropout;
-    request.placement = this.cloukitDropoutPlacement;
-    request.zIndex = this.cloukitDropoutZIndex;
-    // FIXME: Calculate OutsideClick: template.elementRef.nativeElement.offsetHeight
-    this.dropoutRef = this.dropoutService.requestDropoutCreation(request);
-    this.cloukitDropoutActive.emit(true);
+    if (this.dropoutRef === undefined) {
+      const request = new DropoutComponentCreationRequest();
+      request.triggerElement = this.viewContainerRef.element.nativeElement;
+      request.template = this.cloukitDropout;
+      request.placement = this.cloukitDropoutPlacement;
+      request.zIndex = this.cloukitDropoutZIndex;
+      this.dropoutRef = this.dropoutService.requestDropoutCreation(request);
+      this.cloukitDropoutActive.emit(true);
+    }
   }
 
   _doDeactivate() {
-    this.dropoutService.destroyComponent(this.dropoutRef);
-    this.dropoutRef = undefined;
-    this.cloukitDropoutActive.emit(false);
+    if (this.dropoutRef !== undefined) {
+      this.dropoutService.destroyComponent(this.dropoutRef);
+      this.dropoutRef = undefined;
+      this.cloukitDropoutActive.emit(false);
+    }
   }
 
   ngOnInit() {
@@ -72,7 +75,7 @@ export class CloukitDropoutDirective implements OnInit, OnDestroy {
         self._doDeactivate();
       });
     }
-    if (self.cloukitDropoutReposition instanceof Observable) {
+    if (self.cloukitDropoutReposition instanceof Observable && self.dropoutRef !== undefined) {
       self.cloukitDropoutReposition.takeUntil(self.preDestroy).subscribe(() => {
         self.dropoutService.forceReposition(self.dropoutRef);
       });

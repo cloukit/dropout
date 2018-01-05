@@ -4,21 +4,28 @@
  * https://github.com/cloukit/legal
  */
 import {
-  Directive, TemplateRef, Input, HostListener, ViewContainerRef, EventEmitter, Output, OnInit,
+  Directive, TemplateRef, Input, HostListener, ViewContainerRef, EventEmitter, Output, OnInit, OnDestroy,
 } from '@angular/core';
 import { CloukitDropoutService } from './services/dropout.service';
 import { DropoutComponentCreationRequest, DropoutComponentRefId, DropoutPlacement, DropoutTrigger } from './dropout.model';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Directive({
   selector: '[cloukitDropout]',
 })
-export class CloukitDropoutDirective implements OnInit {
+export class CloukitDropoutDirective implements OnInit, OnDestroy {
+  preDestroy = new Subject<boolean>();
+
   @Input('cloukitDropout')
   cloukitDropout: TemplateRef<string>;
 
   @Input('cloukitDropoutTrigger')
   cloukitDropoutTrigger: DropoutTrigger = DropoutTrigger.ONMOUSEOVER;
+
+  @Input('cloukitDropoutOpen')
+  cloukitDropoutOpen: Observable<boolean>;
 
   @Input('cloukitDropoutClose')
   cloukitDropoutClose: Observable<boolean>;
@@ -61,15 +68,26 @@ export class CloukitDropoutDirective implements OnInit {
   ngOnInit() {
     const self = this;
     if (self.cloukitDropoutClose instanceof Observable) {
-      self.cloukitDropoutClose.subscribe(() => {
+      self.cloukitDropoutClose.takeUntil(self.preDestroy).subscribe(() => {
         self._doDeactivate();
       });
     }
     if (self.cloukitDropoutReposition instanceof Observable) {
-      self.cloukitDropoutReposition.subscribe(() => {
+      self.cloukitDropoutReposition.takeUntil(self.preDestroy).subscribe(() => {
         self.dropoutService.forceReposition(self.dropoutRef);
       });
     }
+    if (self.cloukitDropoutOpen instanceof Observable) {
+      self.cloukitDropoutOpen.takeUntil(self.preDestroy).subscribe(() => {
+        if (self.dropoutRef === undefined) {
+          self._doActivate();
+        }
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    this.preDestroy.next(true);
   }
 
   @HostListener('click')

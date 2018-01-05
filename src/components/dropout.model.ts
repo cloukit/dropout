@@ -36,6 +36,7 @@ export enum DropoutPlacement {
 export enum DropoutTrigger {
   ONMOUSEOVER=1,
   ONCLICK=2,
+  PROGRAMMATIC=3,
 }
 
 export class DropoutComponentRefId {

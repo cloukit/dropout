@@ -2,7 +2,7 @@
   "COMMENT": "THIS FILE WILL BE PARSED DURING BUILD. IT IS NOT THE ACTUAL PACKAGE FILE PUSHED TO NPMJS!",
   "name": "@cloukit/dropout",
   "moduleId": "dropout",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Dropout is a non visible helper to drop something down, up, left or right relative to a trigger element",
   "license": "MIT",
   "author": "codelcou.io",

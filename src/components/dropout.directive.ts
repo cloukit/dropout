@@ -75,7 +75,7 @@ export class CloukitDropoutDirective implements OnInit, OnDestroy {
         self._doDeactivate();
       });
     }
-    if (self.cloukitDropoutReposition instanceof Observable && self.dropoutRef !== undefined) {
+    if (self.cloukitDropoutReposition instanceof Observable) {
       self.cloukitDropoutReposition.takeUntil(self.preDestroy).subscribe(() => {
         self.dropoutService.forceReposition(self.dropoutRef);
       });

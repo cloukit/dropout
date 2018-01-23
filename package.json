@@ -21,7 +21,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@cloukit/library-build-chain": "1.15.0",
+    "@cloukit/library-build-chain": "1.16.0",
     "@cloukit/story": "1.2.0"
   },
   "peerDependencies": {

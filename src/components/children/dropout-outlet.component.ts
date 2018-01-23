@@ -3,8 +3,10 @@
  * Copyright (c) 2017 Bernhard Grünewaldt - codeclou.io
  * https://github.com/cloukit/legal
  */
-import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { CloukitDropoutService } from '../services/dropout.service';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
   selector: 'cloukit-dropout-outlet',
@@ -13,8 +15,9 @@ import { CloukitDropoutService } from '../services/dropout.service';
       <ng-container #vc></ng-container>
     </div>`,
 })
-export class CloukitDropoutOutletComponent implements OnInit {
+export class CloukitDropoutOutletComponent implements OnInit, OnDestroy {
 
+  private preDestory = new Subject<boolean>();
   /**
    * ViewChild ref of the <ng-container>.
    * This is where the dropoutComponents will be injected
@@ -34,13 +37,19 @@ export class CloukitDropoutOutletComponent implements OnInit {
     const self = this;
     self.dropoutService.setViewContainerRef(self.vc);
     self.dropoutService.dropoutComponentCreationRequests
+      .takeUntil(self.preDestory)
       .subscribe(id => {
         self.dropoutService
           .createDropout(id,
             self.vc,
-            this.outlet.nativeElement
+            this.outlet.nativeElement,
           );
       });
+  }
+
+  ngOnDestroy() {
+    this.preDestory.next(true);
+    this.preDestory.complete();
   }
 
 }

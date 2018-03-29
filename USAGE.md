@@ -1,22 +1,33 @@
 The **dropout is the basis component for higher level components like Modal, Tooltip, Toastr and Dropdown**.
-Only use it directly, if those higher level components don't solve your problems.
-
 
 &nbsp;
 
-### Positioning
+### Initial Setup
 
-You can **position the dropout container** in the following ways:
+Import the needed modules in your main module.
 
-cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning.svg
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+// (1) Package Imports
+import { CloukitDropoutModule } from '@cloukit/dropout';
 
-But what about **"real centering"**?
-
-cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning-centering.svg
-
-&nbsp;
-
-### Dropout Outlet
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    // (2) Register Imports
+    CloukitDropoutModule,
+  ],
+  providers: [ ],
+  bootstrap: [ AppComponent ],
+})
+// ....
+```
 
 It is very important to place the **cloukit-dropout-outlet** at the top of your root component.
 The root component and your body should have `margin:0` and `padding:0`. Otherwise the absolute placed 
@@ -43,6 +54,19 @@ Inside your main bootstrap components (e.g. `app-component.html`) template you s
 ```
 
 That way the outlet is at x=0,y=0 pixels and all the dropouts will be placed correctly.
+
+&nbsp;
+
+### Positioning
+
+You can **position the dropout container** in the following ways:
+
+cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning.svg
+
+But what about **"real centering"**?
+
+cloukitSvg:https://cloukit.github.io/dropout/doc/cloukit-dropout-positioning-centering.svg
+
 
 &nbsp;
 

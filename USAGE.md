@@ -88,7 +88,8 @@ Please mind the the compatibility chart
 
 | Angular Version | Cloukit Component Version |
 |-----------------|---------------------------|
-| >=5.0.0         | 1.5.6 - current           |
+| >=6.0.0         | 6.0.0 - current           |
+| >=5.0.0         | 1.5.6 - 1.6.0             |
 | >=4.0.0         | 1.0.0 - 1.5.5             |
 
 To install a specific version use:

@@ -1,0 +1,56 @@
+<div class="demo">
+  <!-- Even when the outlet cannot be placed at x=0 and y=0
+       it still works. Because the offset is subtracted. -->
+  <cloukit-dropout-outlet></cloukit-dropout-outlet>
+  <!-- But if you can place the outlet at x=0 and y=0 to avoid
+       possible misplacements of the dropout containers -->
+
+<!--
+Feature: Create DIV Overlays absolutely positioned on the page
+   The user should be able to place a 'trigger element' e.g. a button
+   somewhere on the page. When clicking on the trigger-element a
+   'dropout container' e.g. a div will be created and absolutely positioned
+   on the page either relative to the 'trigger element' or relative to the pages
+   viewport e.g. bottom right corner.
+-->
+
+  <!--
+   Scenario: Window Scroll
+     Given the viewport height is half the page height
+       And the trigger element is placed outside the viewport
+       And the dropout opens onclick
+       And the dropout placement is bottom left (relative)
+     When scrolling down until trigger element is inside viewport
+       And clicking on the trigger element
+     Then the dropout container should be created
+       And be correctly placed relative to the trigger element
+  -->
+  <cloukit-story title="Dropout Directions" story="story-00-dropout-directions">
+    <cloukit-story-00-dropout-directions></cloukit-story-00-dropout-directions>
+  </cloukit-story>
+
+  <br><br>
+
+  <!--
+   Scenario: Div Scroll
+     Given the viewport height is the page height
+       And the trigger element is placed inside a div with overflow-y:scroll
+       And the trigger element sits below the div height (scroll)
+       And the dropout opens onclick
+       And the dropout placement is bottom left (relative)
+     When scrolling down until trigger element is inside viewport
+       And clicking on the trigger element
+     Then the dropout container should be created
+       And be correctly placed relative to the trigger element
+  -->
+  <cloukit-story title="Off Placed Trigger Element" story="story-01-off-placed-trigger-element">
+    <cloukit-story-01-off-placed-trigger-element></cloukit-story-01-off-placed-trigger-element>
+  </cloukit-story>
+
+  <br><br>
+
+  <cloukit-story title="Programmatic Trigger" story="story-02-programmatic-trigger">
+    <cloukit-story-02-programmatic-trigger></cloukit-story-02-programmatic-trigger>
+  </cloukit-story>
+
+</div>

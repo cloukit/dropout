@@ -4,7 +4,6 @@
  * https://github.com/cloukit/legal
  */
 import { Component, HostListener, Input, OnInit, TemplateRef } from '@angular/core';
-import { isNullOrUndefined } from 'util';
 import {
   DropoutOutletDimensions, DropoutPlacement, DropoutTriggerElementDimensions,
   DropoutViewPortDimensions,
@@ -52,7 +51,7 @@ export class CloukitDropoutContainerComponent implements OnInit {
   }
 
   public repositionRelativeToTriggerElement(viewPortDimensions: DropoutViewPortDimensions) {
-    if (!isNullOrUndefined(this.dropoutTriggerElement)) {
+    if (this.dropoutTriggerElement !== undefined && this.dropoutTriggerElement !== null) {
       const triggerElementDimensions = DropoutTriggerElementDimensions.from(this.dropoutTriggerElement);
       const coordinates = DropoutPositioningHelper
         .calculate(this.dropoutPlacement, triggerElementDimensions, viewPortDimensions, DropoutOutletDimensions.from(this.outlet));

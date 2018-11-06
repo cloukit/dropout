@@ -6,7 +6,7 @@
 import { ComponentRef, Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
-  DropoutComponentCreationRequest, DropoutComponentRefId, DropoutOutletDimensions,
+  DropoutComponentCreationRequest, DropoutComponentRefId,
   DropoutViewPortDimensions,
 } from '../dropout.model';
 import { CloukitDropoutContainerComponent } from '../children/dropout-container.component';

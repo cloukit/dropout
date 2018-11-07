@@ -4,6 +4,10 @@
   "status": "EXPERIMENTAL",
   "versions": [
     {
+      "version": "7.0.0",
+      "hasTheme": false
+    },
+    {
       "version": "6.0.0",
       "hasTheme": false
     }
